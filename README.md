@@ -29,10 +29,12 @@ script error catch and user action collect
         （2）支持cors的response头**Access-Control-Allow-Origin**  
 
 
-### start example
+### start locally
 ```
 npm run dev
 ```
+### live demo
+https://echoontheway.github.io/frontEndLog/
 
 ### license
 MIT
