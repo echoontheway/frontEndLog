@@ -12,7 +12,7 @@ script error catch and user action collect
  - 目标：捕获代码运行时的抛错（message, stack,file, line, col）
  - 实现：
   - 一、对于react的组件类（extends React.Component）
-        1.` <errorBoundary></errorBoundary>` 捕获组件constructor、render、生命周期方法中的错误(其中的异步回调的抛错无法捕获)
+        1.`<errorBoundary></errorBoundary>` 捕获组件constructor、render、生命周期方法中的错误(其中的异步回调的抛错无法捕获)
         2.`@catchMethod`捕获单个方法的抛错，适用于event handler，采用修改器实现非入侵式地收集
   - 二、对于普通类
         1.`@catchClass`捕获类自身所有方法的抛错（不含constructor,不含继承的方法）,采用修改器实现非入侵式地收集
@@ -34,5 +34,5 @@ script error catch and user action collect
 npm run dev
 ```
 
-###license
+### license
 MIT
