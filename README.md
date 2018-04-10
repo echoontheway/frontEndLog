@@ -1,6 +1,7 @@
 # frontEndLog
-script error catch and user action collect
-前端日志收集 -辅助生产问题追踪&监控代码错误量
+![GitHub release](https://img.shields.io/github/release/echoontheway/frontEndLog.svg)  
+script error catch and user action collect  
+前端日志收集 -辅助生产问题追踪&监控代码错误量  
 
 
 ### user action collect
