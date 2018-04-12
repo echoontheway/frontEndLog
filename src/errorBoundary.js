@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from "react-dom"
-import log from './log'
+import log from './index'
 
 export default class ErrorBoundary extends Component {
     constructor(props) {
