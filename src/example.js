@@ -85,8 +85,7 @@ class Button extends Component{
 function App(){
     return (
         <div>
-            <h2>travis 自动部署 provider: pages</h2>
-            <h2>collect user action,script error</h2>
+            <h2>collect user action,script error--by travis</h2>
             <ErrorBoundary>
                 <Button species='cat'/>
             </ErrorBoundary>
