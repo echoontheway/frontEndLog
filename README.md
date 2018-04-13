@@ -1,5 +1,5 @@
 # frontEndLog
-![GitHub release](https://img.shields.io/github/release/echoontheway/frontEndLog.svg)  
+![GitHub release](https://img.shields.io/github/release/echoontheway/frontEndLog.svg)  [![Build Status](https://travis-ci.org/echoontheway/frontEndLog.svg?branch=master)](https://travis-ci.org/echoontheway/frontEndLog)  
 script error catch and user action collect  
 
 ## 前端埋点的目的
