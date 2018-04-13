@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","sources":["webpack:///./src/main.css"],"sourcesContent":["body {\n    line-height: 2;\n}\nbutton{\n    margin: 20px\n}"],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;","sourceRoot":""}
