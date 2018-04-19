@@ -16,7 +16,7 @@ export default class ErrorBoundary extends Component {
             hasError: true
         });
         // You can also log the error to an error reporting service
-        log.errorPre(error,info)
+        log.errorTransAndAdd(error,info)
     }
 
     render() {

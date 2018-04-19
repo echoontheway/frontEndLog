@@ -25,12 +25,12 @@ class Cat extends Animal{
         //promise
         new Promise(function(resolve,reject){
             throw new Error('promise inner error')
-        }).catch(e=>log.errorPre(e))
+        }).catch(e=>log.errorTransAndAdd(e))
         //async函数
         async function myAsyncFun(){
             await x+2
         }
-        myAsyncFun().catch(e=>log.errorPre(new Error('async function inner error')))
+        myAsyncFun().catch(e=>log.errorTransAndAdd(new Error('async function inner error')))
         //setTimeout内的抛错交由window.onerror处理
         setTimeout(function(){
             throw new Error('setTimeout inner error')
@@ -85,7 +85,7 @@ class Button extends Component{
 function App(){
     return (
         <div>
-            <h2>collect user action,script error--by travis</h2>
+            <h2>collect user action,script error</h2>
             <ErrorBoundary>
                 <Button species='cat'/>
             </ErrorBoundary>
