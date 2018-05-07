@@ -3,7 +3,7 @@
 script error catch and user action collect  
 
 ## 前端埋点的目的
-  - 用户行为分析，改善产品用户体验  
+  - 用户行为分析，改善用户体验  
   - 辅助生产问题追踪  
   - 监控代码错误量    
 
@@ -38,7 +38,7 @@ script error catch and user action collect
         （2）支持cors的response头**Access-Control-Allow-Origin**  
 ### start locally
 ```
-npm run dev
+npm start
 ```
 ### live demo
 https://echoontheway.github.io/frontEndLog/

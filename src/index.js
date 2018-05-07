@@ -7,7 +7,7 @@
  * 5.页面性能日志 – 页面连接耗时、首次渲染时间、资源加载耗时等
  * 6.自定义上报日志 – 某些业务逻辑的结果、展示、点击等自定义内容
  */
-import {stringifyEach,isType,getCookie,setCookie} from'./lib'
+import {stringifyEach,isType,getCookie,setCookie} from'./util'
 
 class log{
     constructor() {
@@ -53,7 +53,7 @@ class log{
         let self = this //log
         descriptor.value = function(...args){
             try{
-                method.apply(this, args) //this为方法执行时的所在对象
+                return method.apply(this, args) //this为方法执行时的所在对象
             }catch(e){
                 self.errorTransAndAdd(e)
             }
@@ -77,7 +77,7 @@ class log{
             if(isType('Function')(f)){
                 target.prototype[method] = function(...args){
                     try{
-                        f.apply(this,args)
+                        return f.apply(this,args)
                     }catch(e){
                         self.errorTransAndAdd(e)  
                     }

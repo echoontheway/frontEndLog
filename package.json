@@ -22,7 +22,7 @@
     "webpack4"
   ],
   "author": "echoWang",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/echoontheway/frontEndLog/issues"
   },
