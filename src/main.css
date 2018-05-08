@@ -3,9 +3,12 @@ body {
 }
 .container{
     display: flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
 }
 .container section{
     margin: 20px;
+    width: 400px;
 }
 button{
     margin: 20px

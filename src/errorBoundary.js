@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from "react-dom"
-import log from './index'
 
 export default class ErrorBoundary extends Component {
     constructor(props) {
@@ -16,7 +15,7 @@ export default class ErrorBoundary extends Component {
             hasError: true
         });
         // You can also log the error to an error reporting service
-        log.errorTransAndAdd(error,info)
+        window.logger.errorTransAndAdd(error,info)
     }
 
     render() {

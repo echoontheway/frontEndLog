@@ -6,28 +6,66 @@
  * 4.接口调用日志 – 接口调用是否成功
  * 5.页面性能日志 – 页面连接耗时、首次渲染时间、资源加载耗时等
  * 6.自定义上报日志 – 某些业务逻辑的结果、展示、点击等自定义内容
+ * mode
+ * 1.dev:log&&print
+ * 2.prod:log
+ * 3.close(default):no log&&no print
  */
 import {stringifyEach,isType,getCookie,setCookie} from'./util'
 
-class log{
-    constructor() {
+export default class log{
+    constructor(props) {
+        this.mode = props&&props.mode||'close'
         this.data = {
             error:[],
             action:[],
-            visit:{
-                pvid:getCookie('pvid') //=vid.sid,用于标识一次PV的ID。该ID在同一会话的同一次访问中惟一,vid标志终端设备,sid为会话id
-            },
+            visit:{},
             request:[],
             perforemance:[],
             customized:[]
         }
+        this.proxyData()
+        this.logVisit()
         this.catchMethod = this.catchMethod.bind(this)
         this.catchClass = this.catchClass.bind(this)
         this.addError = this.addError.bind(this)
         this.errorTransAndAdd = this.errorTransAndAdd.bind(this)
         this.trackAction = this.trackAction.bind(this)
         window.onerror = this.onerror.bind(this) 
+    }
+
+    /**@description PV*/
+    logVisit(){
+        this.data.visit.pvid = getCookie('pvid') //'vid.sid',用于标识一次PV的ID。该ID在同一会话的同一次访问中惟一,vid标志终端设备,sid为会话id
         this.plusSid()
+    }
+
+    /**@description 同一设备有新的访问，则将sid+1*/
+    plusSid(){
+        setCookie('pvid',(this.data.visit.pvid||'').replace(/\d+$/,n=>+n+1),365*24*60*60*1000)
+    }
+
+    /**
+     * @description 监听data，dev模式下在控制台打印出log
+     */
+    proxyData(){
+        if(this.mode!=='dev'){
+            return
+        }
+        const methodMap = {
+            action:'log',
+            error:'error'
+        }
+        Object.keys(this.data).forEach(type=>{
+            this.data[type] = new Proxy(this.data[type],{
+                set:function(target,key,value,receiver){
+                    if(key!=='length'){
+                        console[methodMap[type]||'log'](type,':',value);   
+                    }
+                    return Reflect.set(target, key, value, receiver);
+                }
+            })
+        })
     }
 
     /**
@@ -49,6 +87,9 @@ class log{
      * @param {object} descriptor 描述子
      */
     catchMethod(target, name, descriptor){
+        if(this.mode === 'close'){
+            return descriptor
+        }
         let method = descriptor.value
         let self = this //log
         descriptor.value = function(...args){
@@ -67,6 +108,9 @@ class log{
      * @param {object} descriptor 描述子
      */
     catchClass(target){
+        if(this.mode === 'close'){
+            return
+        }
         let methods = Object.getOwnPropertyNames(target.prototype)
         let self = this
         for(let method of methods){
@@ -125,6 +169,9 @@ class log{
     trackAction(message){
         let self = this
         return function(target, name, descriptor){
+            if(self.mode === 'close'){
+                return descriptor
+            }
             let method = descriptor.value
             descriptor.value = function (...rest) {
                 self.data.action.push({
@@ -139,10 +186,4 @@ class log{
             return descriptor
         }
     }
-    /**同一设备有新的访问，则将sid+1*/
-    plusSid(){
-        setCookie('pvid',(this.data.visit.pvid||'').replace(/\d+$/,n=>+n+1),365*24*60*60*1000)
-    }
 }
-
-export default window.logger = new log()

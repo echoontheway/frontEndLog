@@ -27,12 +27,13 @@ script error catch and user action collect
         1.`@catchClass`捕获类自身所有方法的抛错（不含constructor,不含继承的方法）,采用修改器实现非入侵式地收集  
         2.`@catchMethod`捕获单个方法的抛错（不含constructor），采用修改器实现非入侵式地收集
    * 三、对于异步回调  
-        1.`errorPre`手动catch后调用errorPre进行收集  
+        1.手动catch后调用`errorTransAndAdd`进行收集  
         （1）promise   
-        （2）async函数  
-        （3）setTimeout      
-   * 四、对于所有未捕获的抛错  
-        1.`window.onerror`收集未捕获到抛错  
+        （2）async函数
+        2.`window.onerror`进行收集 
+        （1）setTimeout   
+   * 四、其它所有未捕获的抛错  
+        1.`window.onerror`收集 
          非同源的script文件需要配置：  
         （1）<script>标签内增加**crossorigin**属性   
         （2）支持cors的response头**Access-Control-Allow-Origin**  
