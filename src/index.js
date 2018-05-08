@@ -7,15 +7,15 @@
  * 5.页面性能日志 – 页面连接耗时、首次渲染时间、资源加载耗时等
  * 6.自定义上报日志 – 某些业务逻辑的结果、展示、点击等自定义内容
  * mode
- * 1.dev:log&&print
- * 2.prod:log
- * 3.close(default):no log&&no print
+ * 1.dev:log&&print,开发模式或者querystring上含有log
+ * 2.prod:log,生产模式
+ * 3.close(default):no log&&no print,生产模式
  */
 import {stringifyEach,isType,getCookie,setCookie} from'./util'
 
 export default class log{
     constructor(props) {
-        this.mode = props&&props.mode||'close'
+        this.mode = props&&props.mode || ~location.search.indexOf('log')&&'dev' ||'close'
         this.data = {
             error:[],
             action:[],
@@ -155,7 +155,7 @@ export default class log{
             file,
             line,
             col,
-            stack,
+            stack:stack.replace(/\n/g,'\\n'),
             time:+new Date()
         })
     }

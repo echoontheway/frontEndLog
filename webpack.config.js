@@ -37,7 +37,6 @@ module.exports = {
         filename: "./index.html"
     })
   ],
-  devtool:"cheap-module-source-map",
   devServer:{
     headers:{
       "Set-Cookie": "pvid=a3fWa.1; Expires=Wed, 01 Jan 2020 00:00:00 GMT"
