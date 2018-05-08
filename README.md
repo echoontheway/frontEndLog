@@ -47,12 +47,13 @@
 ```
 npm start
 ```
-## live demo
-https://echoontheway.github.io/frontEndLog/
-
 ## track.js
 - 目标：线上引用的js文件为压缩混淆后的生产版本，当发生js error时，上报的错误栈为生产版本的行列及文件名，不利于线上jserror定位。将sourcemap发布到生产，一则会导到源码暴露，二则sourcemap文件较大，很耗费带宽。考虑采用hiddensourcemap的方式，仅生成sourcemap并托管到代码库。在日常监控或生产问题追踪时，若需要分析jserror stack,可在线下，将生产日志记录的jserror stack复制到本模块,本模块利用sourcemap进行方法名、行、列、源文件名的映射
 - 本地启动：`node toolbox/track.js`
+<img src="./track.jpg" alt="track sample">
+
+## live demo
+https://echoontheway.github.io/frontEndLog/
 
 ## license
 MIT

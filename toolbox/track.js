@@ -21,7 +21,7 @@ function track({mapFilePath,rawTrack}){
         line,
         column
       })
-      console.log(`\tat ${name} \x1b[34m(static/${source.slice('11')}:${sl}:${sc})\x1b[0m \n`)
+      console.log(`\tat ${name} \x1b[34m(${source.slice('11')}:${sl}:${sc})\x1b[0m \n`)
     })
   })
 }
@@ -30,7 +30,7 @@ function track({mapFilePath,rawTrack}){
 /**配置*/
 track({
   mapFilePath:'./dist/main.js.map',
-  rawTrack:"Error: method error from common class\nat r.jump (https://echoontheway.github.io/frontEndLog/main.js:22:6223)\nat r.e.(anonymous function) (https://echoontheway.github.io/frontEndLog/main.js:6:3507)\nat l.catJump (https://echoontheway.github.io/frontEndLog/main.js:22:6605)"
+  rawTrack:"Error: method error from common class\n    at r.jump (https://echoontheway.github.io/frontEndLog/main.js:22:6223)\n    at r.e.(anonymous function) (https://echoontheway.github.io/frontEndLog/main.js:6:3547)\n    at l.catJump (https://echoontheway.github.io/frontEndLog/main.js:22:6605)\n    at Object.<anonymous> (https://echoontheway.github.io/frontEndLog/main.js:14:729)\n    at Object.invokeGuardedCallback (https://echoontheway.github.io/frontEndLog/main.js:14:796)\n    at Object.invokeGuardedCallbackAndCatchFirstError (https://echoontheway.github.io/frontEndLog/main.js:14:911)\n    at S (https://echoontheway.github.io/frontEndLog/main.js:14:2382)\n    at O (https://echoontheway.github.io/frontEndLog/main.js:14:2861)\n    at M (https://echoontheway.github.io/frontEndLog/main.js:14:3018)\n    at N (https://echoontheway.github.io/frontEndLog/main.js:14:2669)"
 })
 
 
