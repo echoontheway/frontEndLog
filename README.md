@@ -1,5 +1,4 @@
-# frontEndLog
-[![Build Status](https://travis-ci.org/echoontheway/frontEndLog.svg?branch=master)](https://travis-ci.org/echoontheway/frontEndLog)  
+# frontEndLog [![Build Status](https://travis-ci.org/echoontheway/frontEndLog.svg?branch=master)](https://travis-ci.org/echoontheway/frontEndLog)
 
 ## 前端埋点的目的 
   - 用户行为分析，改善用户体验  
@@ -18,8 +17,8 @@
  - prod:log  
  - close(default):no log&&no print  
 ### PV collect
--目标：访问统计  
--实现：`logVisit` via cookie
+- 目标：访问统计  
+- 实现：`logVisit` via cookie
 ### user action collect
  - 目标：收集用户的点击、hover行为
  - 实现： `@trackActon(message)` 收集调用的类的方法名、参数、调用的时间，采用修改器实现非入侵式地收集
